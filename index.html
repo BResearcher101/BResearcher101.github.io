@@ -6,24 +6,19 @@
   <title>Your Name</title>
   <meta name="description" content="Personal website: research, programme management, and technical work." />
 
-  <!-- Fonts (editorial + readable) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
   <style>
     :root{
-      --text: rgba(24, 33, 38, 0.92);
-      --muted: rgba(24, 33, 38, 0.68);
-      --muted2: rgba(24, 33, 38, 0.54);
-      --border: rgba(24, 33, 38, 0.10);
+      /* Higher contrast so text does not look dull */
+      --text: rgba(18, 24, 28, 0.94);
+      --muted: rgba(18, 24, 28, 0.72);
+      --muted2: rgba(18, 24, 28, 0.58);
+      --border: rgba(18, 24, 28, 0.12);
 
-      /* Accent tuned to your soft background */
-      --accent: #5f7f86;        /* muted teal */
-      --accentHover: #4f6e74;
+      --accent: #4f6e74;
+      --accentHover: #3e5d63;
 
-      --shadow: 0 18px 60px rgba(24, 33, 38, 0.18);
-      --shadowSoft: 0 10px 26px rgba(24, 33, 38, 0.10);
+      --shadow: 0 18px 60px rgba(18, 24, 28, 0.18);
+      --shadowSoft: 0 10px 26px rgba(18, 24, 28, 0.10);
       --radius: 18px;
       --max: 1120px;
     }
@@ -33,42 +28,44 @@
 
     body{
       margin: 0;
-      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       color: var(--text);
       line-height: 1.75;
       min-height: 100vh;
       background: #f6f7fb;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: geometricPrecision;
     }
 
-    /* Background image (use your repo file: 123.jpg) */
+    /* Background image (your repo file: 123.jpg) */
     body::before{
       content: "";
       position: fixed;
       inset: 0;
-      background: url("123.jpg") center / cover no-repeat;
-      filter: blur(22px) saturate(1.05);
+      background: url("https://raw.githubusercontent.com/BResearcher101/d1now-prototype/main/images/rec.png") center / cover no-repeat;
+      filter: blur(22px) saturate(1.05) contrast(1.02);
       transform: scale(1.18);
       z-index: -3;
     }
 
-    /* Soft wash overlay so text stays readable */
+    /* Soft wash overlay */
     body::after{
       content: "";
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(900px 520px at 18% 20%, rgba(255,255,255,0.55), transparent 62%),
-        radial-gradient(900px 520px at 75% 22%, rgba(255,255,255,0.45), transparent 62%),
-        linear-gradient(180deg, rgba(246,247,251,0.86), rgba(246,247,251,0.74));
+        radial-gradient(900px 520px at 18% 20%, rgba(255,255,255,0.42), transparent 62%),
+        radial-gradient(900px 520px at 75% 22%, rgba(255,255,255,0.34), transparent 62%),
+        linear-gradient(180deg, rgba(246,247,251,0.82), rgba(246,247,251,0.68));
       z-index: -2;
     }
 
-    /* Subtle grain to hide small-image artefacts */
     .grain{
       position: fixed;
       inset: 0;
       pointer-events: none;
-      opacity: 0.08;
+      opacity: 0.07;
       z-index: -1;
       background-image:
         repeating-linear-gradient(0deg, rgba(0,0,0,0.06) 0 1px, rgba(0,0,0,0) 1px 3px),
@@ -93,9 +90,9 @@
     }
 
     h1, h2, h3, .name{
-      font-family: "Source Serif 4", Georgia, serif;
-      font-weight: 500;
-      letter-spacing: -0.2px;
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+      font-weight: 520;
+      letter-spacing: -0.15px;
     }
 
     /* Top nav */
@@ -104,8 +101,8 @@
       top: 0;
       z-index: 30;
       backdrop-filter: blur(10px);
-      background: rgba(246, 247, 251, 0.72);
-      border-bottom: 1px solid rgba(24, 33, 38, 0.08);
+      background: rgba(246, 247, 251, 0.70);
+      border-bottom: 1px solid rgba(18, 24, 28, 0.10);
     }
     .nav-inner{
       display: flex;
@@ -126,8 +123,8 @@
       width: 34px;
       height: 34px;
       border-radius: 10px;
-      background: linear-gradient(135deg, rgba(95,127,134,0.95), rgba(79,110,116,0.90));
-      box-shadow: 0 10px 26px rgba(95,127,134,0.16);
+      background: linear-gradient(135deg, rgba(79,110,116,0.95), rgba(121,155,163,0.90));
+      box-shadow: 0 10px 26px rgba(79,110,116,0.16);
       border: 1px solid rgba(255,255,255,0.75);
     }
 
@@ -143,20 +140,17 @@
       padding: 8px 10px;
       border-radius: 10px;
       border: 1px solid transparent;
-      color: rgba(24, 33, 38, 0.72);
+      color: rgba(18, 24, 28, 0.74);
     }
     .nav-links a:hover{
       text-decoration: none;
       background: rgba(255,255,255,0.70);
-      border-color: rgba(24, 33, 38, 0.08);
+      border-color: rgba(18, 24, 28, 0.10);
       color: var(--text);
     }
 
     /* Intro */
-    .intro{
-      padding: 64px 0 40px 0;
-    }
-
+    .intro{ padding: 64px 0 24px 0; }
     .intro-grid{
       display: grid;
       grid-template-columns: 320px 1fr;
@@ -164,17 +158,16 @@
       align-items: start;
     }
 
-    .profile{
-      text-align: center;
-    }
+    .profile{ text-align: center; }
+
     .avatar{
       width: 230px;
       height: 230px;
       border-radius: 50%;
       overflow: hidden;
       margin: 0 auto 18px auto;
-      border: 1px solid rgba(24, 33, 38, 0.10);
-      background: rgba(255,255,255,0.85);
+      border: 1px solid rgba(18, 24, 28, 0.12);
+      background: rgba(255,255,255,0.90);
       box-shadow: var(--shadowSoft);
     }
     .avatar img{
@@ -185,9 +178,9 @@
 
     .name{
       margin: 0;
-      font-size: 32px;
-      font-weight: 600;
-      letter-spacing: -0.3px;
+      font-size: 34px;
+      font-weight: 560;
+      letter-spacing: -0.25px;
     }
     .role{
       margin-top: 6px;
@@ -209,51 +202,119 @@
       padding: 8px 14px;
       font-size: 14px;
       border-radius: 999px;
-      border: 1px solid rgba(24, 33, 38, 0.10);
-      background: rgba(255,255,255,0.78);
-      color: rgba(24, 33, 38, 0.88);
-      box-shadow: 0 8px 18px rgba(24, 33, 38, 0.06);
+      border: 1px solid rgba(18, 24, 28, 0.12);
+      background: rgba(255,255,255,0.86);
+      color: rgba(18, 24, 28, 0.88);
+      box-shadow: 0 8px 18px rgba(18, 24, 28, 0.06);
       transition: background 120ms ease, border-color 120ms ease, transform 120ms ease;
     }
     .link-btn:hover{
       text-decoration: none;
-      background: rgba(255,255,255,0.92);
-      border-color: rgba(95,127,134,0.35);
+      background: rgba(255,255,255,0.96);
+      border-color: rgba(79,110,116,0.38);
       transform: translateY(-1px);
     }
 
     .panel{
-      background: rgba(255,255,255,0.76);
-      border: 1px solid rgba(24, 33, 38, 0.10);
+      background: rgba(255,255,255,0.86);
+      border: 1px solid rgba(18, 24, 28, 0.12);
       border-radius: calc(var(--radius) + 10px);
       box-shadow: var(--shadow);
-      padding: 28px;
+      padding: 30px;
       backdrop-filter: blur(8px);
     }
 
     .bio p{ margin-top: 0; margin-bottom: 1.1em; }
     .bio p:last-child{ margin-bottom: 0; }
 
+    /* Pills (retain your current look, but allow buttons) */
     .pillrow{
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 14px;
+      gap: 10px;
+      margin-top: 16px;
     }
+
     .pill{
-      font-size: 12px;
-      color: rgba(24, 33, 38, 0.65);
-      border: 1px solid rgba(24, 33, 38, 0.10);
-      background: rgba(255,255,255,0.80);
-      padding: 6px 10px;
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 14px;
       border-radius: 999px;
+      border: 1px solid rgba(18, 24, 28, 0.14);
+      background: rgba(255,255,255,0.78);
+      color: rgba(18, 24, 28, 0.70);
+      font-size: 14px;
+      line-height: 1;
+      box-shadow: 0 6px 18px rgba(18, 24, 28, 0.06);
+    }
+
+    button.pill{
+      appearance: none;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    button.pill:hover{
+      border-color: rgba(79,110,116,0.38);
+      color: rgba(18, 24, 28, 0.82);
+    }
+
+    button.pill.active{
+      border-color: rgba(79,110,116,0.72);
+      color: rgba(79,110,116,1);
+      font-weight: 650;
+    }
+
+    /* Filter section */
+    .filter-wrap{
+      padding: 0 0 24px 0;
+    }
+
+    .filter-panel{
+      background: rgba(255,255,255,0.84);
+      border: 1px solid rgba(18, 24, 28, 0.12);
+      border-radius: var(--radius);
+      box-shadow: var(--shadowSoft);
+      padding: 18px;
+      backdrop-filter: blur(8px);
+    }
+
+    .filter-head{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .filter-title{
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .filter-input{
+      width: min(420px, 100%);
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(18, 24, 28, 0.14);
+      background: rgba(255,255,255,0.92);
+      color: var(--text);
+      font-size: 14px;
+      outline: none;
+    }
+
+    .filter-meta{
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--muted2);
     }
 
     /* Sections */
     section{ padding: 44px 0; }
     .section-title{
       font-size: 22px;
-      letter-spacing: 0;
       margin: 0 0 8px 0;
     }
     .section-subtitle{
@@ -267,8 +328,8 @@
     .grid-3{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
     .card{
-      background: rgba(255,255,255,0.74);
-      border: 1px solid rgba(24, 33, 38, 0.10);
+      background: rgba(255,255,255,0.84);
+      border: 1px solid rgba(18, 24, 28, 0.12);
       border-radius: var(--radius);
       padding: 18px;
       box-shadow: var(--shadowSoft);
@@ -294,20 +355,28 @@
       gap: 10px;
     }
 
-    .pub{
-      display: grid;
-      gap: 6px;
+    details{
+      border-top: 1px solid rgba(18, 24, 28, 0.10);
+      margin-top: 12px;
+      padding-top: 12px;
     }
-    .pub .meta{
-      color: var(--muted2);
-      font-size: 12px;
+
+    summary{
+      cursor: pointer;
+      color: var(--accent);
+      font-weight: 650;
+      list-style: none;
     }
+    summary::-webkit-details-marker{ display: none; }
+
+    .pub{ display: grid; gap: 6px; }
+    .pub .meta{ color: var(--muted2); font-size: 12px; }
 
     .footer{
       padding: 30px 0 48px 0;
       color: var(--muted2);
-      border-top: 1px solid rgba(24, 33, 38, 0.08);
-      background: rgba(255,255,255,0.55);
+      border-top: 1px solid rgba(18, 24, 28, 0.10);
+      background: rgba(255,255,255,0.60);
       backdrop-filter: blur(8px);
     }
 
@@ -323,11 +392,11 @@
       .grid-2, .grid-3{ grid-template-columns: 1fr; }
       .profile{ flex-direction: column; align-items: flex-start; }
       .avatar{ width: 170px; height: 170px; }
-      .panel{ padding: 20px; }
+      .panel{ padding: 22px; }
     }
 
     :focus-visible{
-      outline: 2px solid rgba(95,127,134,0.85);
+      outline: 2px solid rgba(79,110,116,0.85);
       outline-offset: 3px;
       border-radius: 10px;
     }
@@ -362,12 +431,12 @@
 
           <div class="profile">
             <div class="avatar">
-              <img src="profile.jpg" alt="Your Name" />
+              <img src="https://raw.githubusercontent.com/BResearcher101/BResearcher101.github.io/main/image/profile.png" alt="Your Name" />
             </div>
 
             <div>
               <h1 class="name">Your Name</h1>
-              <div class="role">Your Role or Title</div>
+              <div class="role">Programme Manager and Behavioural Science Researcher</div>
 
               <div class="links">
                 <a class="link-btn" href="mailto:your.email@example.com">Email</a>
@@ -381,76 +450,507 @@
 
           <div class="panel bio">
             <p>
-              I work across behavioural science, digital health, and evidence synthesis, with a focus on applied research that fits real settings.
-              I currently work as <strong>Your Role</strong> at <strong>Your Organisation</strong>.
+              I work at the intersection of behavioural science, digital health, and research delivery. I enjoy building collaboration around complex
+              problems, whether I am coordinating a multi-site study, synthesising evidence, or supporting teams to work in a more transparent and
+              replicable way.
             </p>
 
             <p>
-              My work sits at the intersection of research, programme delivery, and technical implementation. I care about clear methods, transparent
-              documentation, and outputs that other people can use.
+              I focus on how people adopt and sustain healthier, safer, and more sustainable behaviours. To understand what drives change, I look at
+              what people do now, what we want to support, and what needs to shift in capability, opportunity, and motivation.
             </p>
 
             <p>
-              This website summarises three main research themes, a snapshot of my programme management experience, and examples of technical work
-              (tools, workflows, and reproducible analysis).
+              Because human behaviour is complex, I take a multidisciplinary approach that draws on psychology, social science, environmental research,
+              technology, and management. I care about practical methods that people can use, not only theory.
             </p>
 
             <p>
-              If you would like to discuss collaboration, roles, or projects, please <a href="#contact">contact me</a>.
+              I also work in open science, aiming to make research more accessible and reproducible. I currently work as <strong>your role</strong> at
+              <strong>your organisation</strong>.
             </p>
 
-            <div class="pillrow" aria-label="Key topics">
-              <span class="pill">Behavioural science</span>
+            <!-- Keep these as visible tags, but they also match the filters below -->
+            <div class="pillrow" aria-label="Highlights">
+              <span class="pill">Programme management</span>
+              <span class="pill">Behaviour change</span>
               <span class="pill">Digital health</span>
               <span class="pill">Evidence synthesis</span>
-              <span class="pill">Programme management</span>
-              <span class="pill">R and Python</span>
+              <span class="pill">Open science</span>
             </div>
           </div>
 
         </div>
       </div>
     </section>
+
+<section class="filter-wrap" aria-label="Filters">
+  <div class="container">
+
+    <details class="filter-details">
+      <summary class="filter-toggle">
+        Click for tags <span class="hint">(filter by skill, method, or tool)</span>
+      </summary>
+
+      <div class="filter-panel" style="margin-top: 14px;">
+        <div class="filter-head">
+          <p class="filter-title" style="margin:0;"><strong>Filter by skill, method, or tool</strong> (click a tag)</p>
+          <input class="filter-input" id="tagSearch" type="text" placeholder="Type to find a tag, for example: MAXQDA, REDCap, TMF" aria-label="Search tags" />
+        </div>
+
+        <div class="pillrow" id="tag-filters" aria-label="Tag filters">
+          <button class="pill active" data-filter="all" type="button">All</button>
+
+          <!-- Qualitative -->
+          <button class="pill" data-filter="qualitative-research" type="button">Qualitative research</button>
+          <button class="pill" data-filter="qualitative-interviewing" type="button">Qualitative interviewing</button>
+          <button class="pill" data-filter="focus-groups" type="button">Focus groups</button>
+          <button class="pill" data-filter="autoethnography" type="button">Autoethnography</button>
+          <button class="pill" data-filter="thematic-analysis" type="button">Thematic analysis</button>
+          <button class="pill" data-filter="content-analysis" type="button">Content analysis</button>
+          <button class="pill" data-filter="maxqda" type="button">MAXQDA</button>
+          <button class="pill" data-filter="nvivo" type="button">NVivo</button>
+
+          <!-- Quantitative -->
+          <button class="pill" data-filter="quantitative-research" type="button">Quantitative research</button>
+          <button class="pill" data-filter="surveys" type="button">Surveys</button>
+          <button class="pill" data-filter="questionnaires" type="button">Questionnaires</button>
+          <button class="pill" data-filter="regression-analysis" type="button">Regression analysis</button>
+          <button class="pill" data-filter="anova" type="button">ANOVA</button>
+          <button class="pill" data-filter="t-test" type="button">t-test</button>
+          <button class="pill" data-filter="spss" type="button">SPSS</button>
+          <button class="pill" data-filter="r" type="button">R</button>
+
+          <!-- Scripting -->
+          <button class="pill" data-filter="python" type="button">Python</button>
+          <button class="pill" data-filter="markdown" type="button">Markdown</button>
+          <button class="pill" data-filter="shell-script" type="button">Shell script</button>
+          <button class="pill" data-filter="html" type="button">HTML</button>
+          <button class="pill" data-filter="javascript" type="button">JavaScript</button>
+
+          <!-- Data management -->
+          <button class="pill" data-filter="redcap" type="button">REDCap</button>
+          <button class="pill" data-filter="covidence" type="button">Covidence</button>
+          <button class="pill" data-filter="rayyan" type="button">Rayyan</button>
+          <button class="pill" data-filter="endnote" type="button">EndNote</button>
+          <button class="pill" data-filter="zotero" type="button">Zotero</button>
+          <button class="pill" data-filter="git" type="button">Git</button>
+          <button class="pill" data-filter="osf" type="button">OSF</button>
+
+          <!-- Project management -->
+          <button class="pill" data-filter="project-management" type="button">Project management</button>
+          <button class="pill" data-filter="ms-office" type="button">MS Office Suite</button>
+          <button class="pill" data-filter="power-automate" type="button">Power Automate</button>
+          <button class="pill" data-filter="visio" type="button">Visio</button>
+          <button class="pill" data-filter="canva" type="button">Canva</button>
+          <button class="pill" data-filter="smartsheet" type="button">Smartsheet</button>
+          <button class="pill" data-filter="jira" type="button">Jira</button>
+          <button class="pill" data-filter="confluence" type="button">Confluence</button>
+
+          <!-- Clinical trial and governance -->
+          <button class="pill" data-filter="clinical-trial-management" type="button">Clinical trial management</button>
+          <button class="pill" data-filter="clinical-trial-design" type="button">Clinical trial design</button>
+          <button class="pill" data-filter="risk-management" type="button">Risk management</button>
+          <button class="pill" data-filter="tmf-management" type="button">TMF management</button>
+          <button class="pill" data-filter="site-recruitment" type="button">Site recruitment and management</button>
+          <button class="pill" data-filter="vendor-management" type="button">Vendor and stakeholder management</button>
+          <button class="pill" data-filter="ctms" type="button">Clinical trial management systems</button>
+          <button class="pill" data-filter="dpia" type="button">DPIA</button>
+          <button class="pill" data-filter="dmp" type="button">DMP</button>
+          <button class="pill" data-filter="ethics-gdpr" type="button">Ethics and GDPR</button>
+          <button class="pill" data-filter="sharepoint" type="button">SharePoint</button>
+          <button class="pill" data-filter="document-control" type="button">Document control</button>
+          <button class="pill" data-filter="issue-action-tracking" type="button">Risk, issue and action tracking</button>
+          <button class="pill" data-filter="regulatory-submission" type="button">Regulatory submission</button>
+
+          <!-- OS and cloud -->
+          <button class="pill" data-filter="redhat-linux" type="button">Red Hat Linux</button>
+          <button class="pill" data-filter="aws" type="button">Amazon Web Services</button>
+          <button class="pill" data-filter="openstack" type="button">OpenStack</button>
+          <button class="pill" data-filter="google-cloud" type="button">Google Cloud</button>
+        </div>
+
+        <div class="filter-meta" id="filterMeta">Showing all items.</div>
+      </div>
+    </details>
+
+  </div>
+</section>
 
     <section id="research">
       <div class="container">
         <h2 class="section-title">Research</h2>
         <p class="section-subtitle">
-          Three themes that reflect my current work. Replace the titles and text with your own wording.
+          I enjoy the challenge of working in multidisciplinary and interdisciplinary spaces. I find it energising to collaborate with teams and
+          independent researchers with different expertise, and to widen my perspective across methods, sectors, and real-world contexts.
         </p>
 
         <div class="grid grid-3">
-          <div class="card">
-            <h3>Theme 1: Digital health and self-management</h3>
-            <p>Interventions, engagement, and outcomes in real services, with attention to lived experience and equity.</p>
-            <div class="pillrow">
-              <span class="pill">Intervention design</span>
-              <span class="pill">Process evaluation</span>
-            </div>
-          </div>
 
-          <div class="card">
-            <h3>Theme 2: Evidence synthesis and methods</h3>
-            <p>Systematic and umbrella reviews, reporting quality, and methods for complex interventions across disciplines.</p>
-            <div class="pillrow">
-              <span class="pill">PRISMA</span>
-              <span class="pill">Umbrella review</span>
-            </div>
-          </div>
+          <!-- Block 1: Farm safety intervention development and testing -->
+          <div class="card filter-item"
+               data-tags="qualitative-research qualitative-interviewing focus-groups thematic-analysis content-analysis mixed-methods-research quantitative-research surveys questionnaires r maxqda evidence-synthesis behaviour-change">
+            <h3>Behaviour change intervention development and testing (Farm safety, Ireland)</h3>
+            <p>
+              I developed and evaluated a behaviour change intervention to increase safety behaviours amongst Irish farmers, using mixed methods across
+              evidence synthesis, co-design, and feasibility testing.
+            </p>
 
-          <div class="card">
-            <h3>Theme 3: Behaviour change in real-world contexts</h3>
-            <p>Applied behavioural science, implementation constraints, and pragmatic design choices that improve fit and feasibility.</p>
-            <div class="pillrow">
-              <span class="pill">COM-B</span>
-              <span class="pill">BCTs</span>
+            <details>
+              <summary>Read more</summary>
+              <div style="margin-top: 12px; color: var(--muted); font-size: 14px; display: grid; gap: 10px;">
+                <p>
+                  <strong>Evidence synthesis:</strong> Systematic review of farm safety interventions, using behaviour change frameworks and the Behaviour Change Technique (BCT) taxonomy for narrative synthesis. This informed identification of candidate techniques and highlighted gaps in existing programmes.
+                  <br>
+                  <a href="#" target="_blank" rel="noopener">Systematic review link</a>
+                  <span style="color: var(--muted2);">[Replace with DOI/URL]</span>
+                </p>
+
+                <p>
+                  <strong>Needs assessment:</strong> Online focus group discussions with 20 Irish farmers to understand safety needs and context, adapted for COVID-19 circumstances.
+                  <br>
+                  <a href="#" target="_blank" rel="noopener">Focus group study link</a>
+                  <span style="color: var(--muted2);">[Replace with DOI/URL]</span>
+                </p>
+
+                <p>
+                  <strong>Co-design and development:</strong> Collaborated with a multidisciplinary team and stakeholders to co-design the intervention, aligning with practical industry requirements and delivery constraints.
+                </p>
+
+                <p>
+                  <strong>Feasibility trial:</strong> Mixed-method feasibility trial with 20 Irish farmers, evaluating feasibility, fidelity, and acceptability.
+                  <br>
+                  <a href="#" target="_blank" rel="noopener">Feasibility trial link</a>
+                  <span style="color: var(--muted2);">[Replace with DOI/URL]</span>
+                </p>
+
+                <p>
+                  <strong>Evaluation approach:</strong> Surveys and in-depth interviews using established frameworks and checklists, reporting high acceptability and strong receipt and enactment fidelity.
+                  <span style="color: var(--muted2);">[If these figures come from a specific report/paper, link it here]</span>
+                </p>
+
+                <p>
+                  <strong>Scalability:</strong> Demonstrated potential to package the intervention as a train-the-trainer programme to support broader delivery of farm safety topics.
+                </p>
+              </div>
+            </details>
+
+            <div class="pillrow" aria-label="Block tags">
+              <span class="pill">Mixed methods research</span>
+              <span class="pill">Qualitative interviewing</span>
+              <span class="pill">Surveys</span>
+              <span class="pill">Thematic analysis</span>
+              <span class="pill">MAXQDA</span>
             </div>
           </div>
+<div class="card filter-item"
+     data-tags="collaboration interdisciplinary multidisciplinary international-research research-networks policy-engagement sustainability climate-change mental-health evidence-synthesis systematic-review umbrella-review meta-analysis guideline-development delphi-method qualitative-analysis thematic-analysis content-analysis digital-interventions games-for-empathy social-media-research">
+  <h3>Collaborative health and sustainability research</h3>
+  <p>
+    I enjoy working across disciplines and sectors, and I actively seek collaborations that let me learn from other
+    experts, contribute meaningfully, and strengthen outputs that teams can use. These projects have broadened my
+    methods, networks, and perspective across health, sustainability, and digital research.
+  </p>
+
+  <details>
+    <summary>Read more</summary>
+
+    <div style="margin-top: 12px; color: var(--muted); font-size: 14px; display: grid; gap: 12px;">
+      <p>
+        Collaboration suits how I work. It gives me opportunities to widen my horizons, test my limits, and focus on the
+        tasks I enjoy most, rather than being responsible for every part of delivery. I say yes to collaborations where
+        I can broaden my knowledge, where the work interests teams and communities, or where it strengthens my skills
+        and professional profile. Along the way, these collaborations have brought friendships, travel memories, diverse
+        cultural experiences, and a strong professional network.
+      </p>
+
+      <details>
+        <summary>COST Actions and European research networks (2024 –)</summary>
+        <div style="margin-top: 10px; display: grid; gap: 10px;">
+          <p>
+            Contributing member of multiple COST Action working groups, participating in collaborative research,
+            regular meetings, and policy engagement activities across diverse European networks.
+          </p>
+
+          <details>
+            <summary>CliMent: COST Action CA23113 (2024 –)</summary>
+            <div style="margin-top: 10px; display: grid; gap: 10px;">
+              <p>
+                Task lead for an umbrella review on behaviour change interventions to promote climate action, including
+                coordination of inputs, screening plans, and timelines. Co-led screening and data extraction templates,
+                and contributed to screening, extraction, quality appraisal and synthesis.
+              </p>
+              <p>
+                Co-lead author of the chapter <em>“Leaving No One Behind? A review of Equity, Diversity and Inclusion in
+                Behaviour Change Interventions”</em>, with responsibility for scope, methods, and synthesis.
+              </p>
+              <p>
+                Contributed to dissemination activities, including conference and briefing materials for non-academic
+                audiences.
+              </p>
+              <p>
+                <a href="#" target="_blank" rel="noopener">Project link</a>
+                <span style="color: var(--muted2);">[Replace with URL]</span>
+              </p>
+            </div>
+          </details>
+        </div>
+      </details>
+
+      <details>
+        <summary>ReFiND: International reporting guideline for fidelity in non-drug, non-surgical trials (2024 –)</summary>
+        <div style="margin-top: 10px; display: grid; gap: 10px;">
+          <p>
+            <strong>Affiliation:</strong> ReFiND International consortium led from Monash University.
+            <strong>Role:</strong> Delphi panellist and manuscript co-author.
+          </p>
+          <p>
+            Contributed to Delphi rounds on fidelity reporting items for behavioural trials, with feedback on clarity,
+            feasibility, and likely uptake.
+          </p>
+          <p>
+            <a href="#" target="_blank" rel="noopener">Project link</a>
+            <span style="color: var(--muted2);">[Replace with URL]</span>
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Developing video game strategies for empathy and refugee experiences (2023–2025)</summary>
+        <div style="margin-top: 10px; display: grid; gap: 10px;">
+          <p>
+            <strong>Role:</strong> Contributor to qualitative analysis and co-author.
+          </p>
+          <p>
+            Contributed to analysis of two video games aimed at fostering empathy for refugees, focusing on how game
+            mechanics shape emotional engagement.
+          </p>
+          <p>
+            Developed qualitative analysis strategies and supported thematic coding from focus group and interview data,
+            identifying patterns around empathy, narrative engagement, and game elements.
+          </p>
+          <p>
+            Co-edited the manuscript to ensure clarity in presenting findings on the emotional impact of mechanics on
+            perceptions of refugees.
+          </p>
+          <p>
+            <a href="#" target="_blank" rel="noopener">Project link</a>
+            <span style="color: var(--muted2);">[Replace with URL]</span>
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Social media and public health communication studies (2022–2025)</summary>
+        <div style="margin-top: 10px; display: grid; gap: 10px;">
+          <p>
+            <strong>Role:</strong> Contributor to qualitative analysis and co-author.
+          </p>
+          <p>
+            Supported content analysis of COVID-19 public health communication on Twitter (X), coding tweets, categorising
+            users, and classifying message types and sentiment, and contributing to coding framework development.
+          </p>
+          <p>
+            Supported a feasibility study of an Instagram-based antimicrobial resistance (AMR) awareness intervention,
+            contributing to co-design protocol work and qualitative thematic analysis.
+          </p>
+          <p>
+            <a href="#" target="_blank" rel="noopener">Project link</a>
+            <span style="color: var(--muted2);">[Replace with URL]</span>
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Digital psychological interventions for post-operative pain (2024 –)</summary>
+        <div style="margin-top: 10px; display: grid; gap: 10px;">
+          <p>
+            <strong>Affiliation:</strong> University of Galway. <strong>Role:</strong> Contributing reviewer.
+          </p>
+          <p>
+            Contributing reviewer on a PRISMA-aligned systematic review and meta-analysis, supporting screening,
+            extraction, quality assessment, and analysis of digital psychological interventions for post-operative pain.
+          </p>
+          <p>
+            <a href="#" target="_blank" rel="noopener">Project link</a>
+            <span style="color: var(--muted2);">[Replace with URL]</span>
+          </p>
+        </div>
+      </details>
+    </div>
+  </details>
+
+  <div class="pillrow" aria-label="Block tags">
+    <span class="pill">Collaboration</span>
+    <span class="pill">Interdisciplinary</span>
+    <span class="pill">Policy engagement</span>
+    <span class="pill">Evidence synthesis</span>
+    <span class="pill">Guideline development</span>
+  </div>
+</div>
+
+
+<div class="card filter-item"
+     data-tags="open-science collaboration interdisciplinary international-research qualitative-analysis content-analysis autoethnography evidence-synthesis translation accessibility equity-diversity-inclusion open-education open-data">
+  <h3>Open science research and open collaboration</h3>
+
+  <p>
+    I began my career working with open-source technologies and have long believed in the democratisation of knowledge.
+    Open science–driven collaboration allows research to be more transparent, accessible, reproducible, and inclusive,
+    while also strengthening how teams work together across disciplines and contexts.
+  </p>
+
+  <details>
+    <summary>Read more</summary>
+
+    <div style="margin-top: 12px; color: var(--muted); font-size: 14px; display: grid; gap: 12px;">
+      <p>
+        My engagement with open science grew through international collaborations where openness was not an add-on, but
+        a core value. These projects focus on making research processes clearer, outputs more accessible, and credit more
+        equitable, particularly for researchers and communities that are often under-represented.
+      </p>
+
+      <details>
+        <summary>
+          What difference do cash transfers make? Impacts and mechanisms in Malawi and Lesotho
+        </summary>
+        <div style="margin-top: 10px; display: grid; gap: 10px;">
+          <p>
+            <strong>Affiliation:</strong> Independent international collaboration<br>
+            <strong>Role:</strong> Data analyst and co-author
+          </p>
+          <p>
+            Co-author and qualitative data analyst on a qualitative re-analysis of cash transfer impacts in Malawi and
+            Lesotho, contributing to coding, interpretation, and manuscript review.
+          </p>
+          <p>
+            <a href="#" target="_blank" rel="noopener">OSF project link</a>
+            <span style="color: var(--muted2);">[Replace with URL]</span>
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Open Social Psychology (Open Educational Resource)</summary>
+        <div style="margin-top: 10px; display: grid; gap: 10px;">
+          <p>
+            <strong>Affiliation:</strong> International open-education collaboration<br>
+            <strong>Role:</strong> Chapter reviewer and structural editor (2025 –)
+          </p>
+          <p>
+            Reviewed and structurally edited two chapters (<em>Hot Coffee Interpersonal Warmth</em> and
+            <em>The Florida Priming Effect</em>), focusing on clarity, evidential rigour, pedagogy, and alignment with
+            open science principles.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          Giving CRediT in languages other than English: translation and accessibility
+        </summary>
+        <div style="margin-top: 10px; display: grid; gap: 10px;">
+          <p>
+            <strong>Affiliation:</strong> Independent international collaboration<br>
+            <strong>Role:</strong> Translation lead (Malayalam) and co-author
+          </p>
+          <p>
+            Led one language stream translating CRediT contributor roles to improve non-English accessibility, checking
+            terminology against scholarly usage and community practice.
+          </p>
+          <p>
+            Contributed to analysis and manuscript development.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          Global survey on accessible feedback processes in research (FORRT)
+        </summary>
+        <div style="margin-top: 10px; display: grid; gap: 10px;">
+          <p>
+            <strong>Affiliation:</strong> Independent international collaboration<br>
+            <strong>Funder:</strong> Leverhulme Trust–funded “Feedback in Academia” project, FORRT<br>
+            <strong>Role:</strong> Translator and co-author
+          </p>
+          <p>
+            Led one language stream for translation work supporting accessibility in feedback practices.
+            Contributed as a content developer and reviewer during a FORRT community hackathon for an open e-book on
+            inclusive feedback in academia.
+          </p>
+          <p>
+            Contributed to analysis and manuscript development.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          Positive, Inclusive and Participatory Program for Educators (POST-Edu)
+        </summary>
+        <div style="margin-top: 10px; display: grid; gap: 10px;">
+          <p>
+            <strong>Affiliation:</strong> International open-education collaboration<br>
+            <strong>Role:</strong> Content reviewer (2024 –)
+          </p>
+          <p>
+            Reviewed draft module packs for pedagogical clarity, inclusivity, and practical classroom use.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          Auto-ethnographic study of open science adoption among early career researchers
+        </summary>
+        <div style="margin-top: 10px; display: grid; gap: 10px;">
+          <p>
+            <strong>Affiliation:</strong> Agape Open Science Community<br>
+            <strong>Role:</strong> Co-lead, co-author, and reflexive participant (2022 –)
+          </p>
+          <p>
+            Auto-ethnographic study examining how early career researchers adopt open science practices, including
+            protocol input, author-participant reflections, qualitative analysis, and manuscript revision.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          Awards proliferation and award trends in Ecology and Evolutionary Biology societies
+        </summary>
+        <div style="margin-top: 10px; display: grid; gap: 10px;">
+          <p>
+            <strong>Affiliation:</strong> Independent international collaboration<br>
+            <strong>Role:</strong> Protocol reviewer, data collector, data validator, and co-author
+          </p>
+          <p>
+            Contributed to protocol review, data collection from public sources, validation, and analysis for studies
+            examining award distribution and trends across ecology and evolutionary biology societies.
+          </p>
+          <p>
+            Supported the creation of open, fully documented datasets.
+          </p>
+        </div>
+      </details>
+    </div>
+  </details>
+
+  <div class="pillrow" aria-label="Block tags">
+    <span class="pill">Open science</span>
+    <span class="pill">International collaboration</span>
+    <span class="pill">Accessibility</span>
+    <span class="pill">Equity and inclusion</span>
+    <span class="pill">Open education</span>
+  </div>
+</div>
+
         </div>
       </div>
     </section>
 
-    <section id="programme">
+<section id="programme">
   <div class="container">
     <h2 class="section-title">Programme Management</h2>
 
@@ -527,69 +1027,65 @@
 </section>
 
 
-  <section id="technical">
+<section id="technical">
   <div class="container">
     <h2 class="section-title">Technical Work</h2>
 
     <p class="section-subtitle">
-      I started my career in IT, working in server administration, application management, troubleshooting, and
-      Python-based automation. I still enjoy technical work and bring this background into research and programme
-      delivery to make workflows more streamlined, manageable, and reproducible.
+      I started my career in IT, working in server administration, application management, troubleshooting, and Python-based automation.
+      I still enjoy technical work and bring this background into research and programme delivery to make workflows more streamlined,
+      manageable, and reproducible.
     </p>
 
     <p class="section-subtitle">
-      My focus is on practical, lightweight technical solutions that support research teams, rather than bespoke
-      systems that are difficult to maintain once projects move into delivery.
+      I focus on practical, lightweight technical solutions that teams can maintain, reuse, and adapt across studies.
     </p>
 
-    <!-- Three horizontal cards -->
-    <div class="grid grid-3">
+    <!-- Use a flexible grid so 5 cards still look tidy -->
+    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
 
-      <!-- Data and analysis -->
+      <!-- 1) Data and analysis -->
       <div class="card filter-item"
-           data-tags="data-analysis quantitative-research qualitative-research mixed-methods-research spss r surveys questionnaires evidence-synthesis">
+           data-tags="quantitative-research qualitative-research mixed-methods-research spss r python surveys questionnaires evidence-synthesis covidence rayyan">
         <h3>Data and analysis</h3>
 
         <p>
-          I use quantitative and qualitative tools to support evidence synthesis, evaluation, and reporting across
-          studies, selecting approaches that balance rigour with feasibility for real-world teams.
+          Quantitative and mixed-methods analysis to support evidence synthesis, evaluation, and reporting, with outputs designed
+          for both academic and operational audiences.
         </p>
 
         <details>
           <summary>Read more</summary>
           <ul class="list" style="margin-top:12px;">
-            <li>Used SPSS and R for survey analysis, descriptive statistics, and inferential testing within feasibility and evaluation studies.</li>
-            <li>Supported evidence synthesis workflows using tools such as Covidence and Rayyan for screening, extraction, and quality appraisal.</li>
-            <li>Integrated quantitative and qualitative findings in mixed-methods studies to support interpretation and decision-making.</li>
-            <li>Produced analysis outputs and summaries designed for both academic and operational audiences.</li>
+            <li>Used SPSS and R for survey analysis and reporting within feasibility and evaluation studies.</li>
+            <li>Supported evidence synthesis workflows using Covidence and Rayyan for screening, extraction, and quality appraisal.</li>
+            <li>Integrated qualitative and quantitative findings to support interpretation and decision-making.</li>
           </ul>
         </details>
 
         <div class="pillrow">
           <span class="pill">SPSS</span>
           <span class="pill">R</span>
-          <span class="pill">Mixed methods</span>
+          <span class="pill">Python</span>
           <span class="pill">Evidence synthesis</span>
         </div>
       </div>
 
-      <!-- Qualitative workflows -->
+      <!-- 2) Qualitative workflows -->
       <div class="card filter-item"
-           data-tags="qualitative-workflows thematic-analysis content-analysis maxqda nvivo reflexive-analysis research-operations">
+           data-tags="qualitative-research thematic-analysis content-analysis maxqda nvivo qualitative-interviewing focus-groups">
         <h3>Qualitative workflows</h3>
 
         <p>
-          I design qualitative workflows that prioritise transparency, consistency, and auditability, supporting
-          analysis that teams can understand and revisit over time.
+          Transparent and consistent qualitative workflows, with clear documentation that supports team review and future reuse.
         </p>
 
         <details>
           <summary>Read more</summary>
           <ul class="list" style="margin-top:12px;">
             <li>Conducted qualitative analysis using MAXQDA and NVivo across interviews, focus groups, and document-based data.</li>
-            <li>Applied reflexive thematic analysis and content analysis approaches, aligned with study aims and epistemological positioning.</li>
-            <li>Developed coding structures, memos, and documentation to support team-based analysis and review.</li>
-            <li>Supported qualitative components of process evaluations, feasibility studies, and collaborative research projects.</li>
+            <li>Applied reflexive thematic analysis and content analysis approaches aligned with study aims.</li>
+            <li>Developed coding structures, memos, and documentation to support auditability and collaboration.</li>
           </ul>
         </details>
 
@@ -597,41 +1093,170 @@
           <span class="pill">MAXQDA</span>
           <span class="pill">NVivo</span>
           <span class="pill">Thematic analysis</span>
-          <span class="pill">Qualitative research</span>
+          <span class="pill">Content analysis</span>
         </div>
       </div>
 
-      <!-- Web and research tooling -->
+      <!-- 3) Reusable templates and resources -->
       <div class="card filter-item"
-           data-tags="web-development research-tooling github html javascript open-science accessibility project-management canva figma">
-        <h3>Web and research tooling</h3>
+           data-tags="open-science reproducibility documentation github osf templates automation python r markdown">
+        <h3>Reusable templates and resources</h3>
 
         <p>
-          I develop lightweight web and documentation tools that support recruitment, communication, and knowledge
-          sharing across research projects.
+          I create reusable resources to reduce reinvention mid-project and make delivery more manageable.
+          When practical, I publish short scripts and visual materials to OSF and GitHub to support transparency and reuse.
         </p>
 
         <details>
           <summary>Read more</summary>
           <ul class="list" style="margin-top:12px;">
-            <li>Developed an ongoing Trial Website Protocol as a reusable template for future studies, covering set-up, content models, recruitment resources, checklists, and page templates.</li>
-            <li>Wrote the technical proposal and scope supporting a successful HRB Knowledge Translation Award application, defining objectives, deliverables, timelines, and resourcing assumptions.</li>
-            <li>Led requirements gathering and website development with research teams, clinical teams, and the Young Adult Panel, defining information architecture, content strategy, workflows, and accessibility standards.</li>
-            <li>Co-designed participant-facing materials and recruitment assets using Canva and Adobe Express, alongside simple HTML pages for demonstrations and prototypes.</li>
-            <li>Managed build and rollout activities, including backlog creation, sprint planning, quality assurance, and user acceptance testing.</li>
-            <li>Maintained GitHub repositories with versioned code and documentation to enable fork-and-adapt workflows for trial management.</li>
-            <li>Led the technical development of the AGAPE Introductory Open Science MOOC, including reusable templates, integrated quizzes, certificate generation, and open licensing.
-              <a href="https://agape-openscience.github.io/AgapeOpenscienceMOOC/index.html" target="_blank" rel="noopener">Course link</a>
-            </li>
-            <li>Produced configuration notes, examples, FAQs, and step-by-step guides to reduce set-up time and reliance on paid learning management systems.</li>
+            <li>Maintain versioned templates and small utilities with clear README guidance to support fork-and-adapt workflows.</li>
+            <li>Developed reusable templates for the AGAPE MOOC, including a quiz and certificate generator with documentation designed for reuse.</li>
+            <li>Share supporting materials (for example, scripts, diagrams, and participant-facing visuals) via OSF and GitHub where appropriate.</li>
           </ul>
         </details>
 
         <div class="pillrow">
-          <span class="pill">HTML</span>
           <span class="pill">GitHub</span>
-          <span class="pill">Open science</span>
+          <span class="pill">OSF</span>
+          <span class="pill">Documentation</span>
+          <span class="pill">Reproducibility</span>
+        </div>
+      </div>
+
+      <!-- 4) Website development -->
+      <div class="card filter-item"
+           data-tags="web-development html javascript github accessibility project-management canva adobe-express digital-health open-science">
+        <h3>Website development</h3>
+
+        <p>
+          Lightweight, maintainable websites and recruitment-support materials for research projects, developed with attention to
+          accessibility, health literacy, and clear governance and privacy language.
+        </p>
+
+        <details>
+          <summary>Read more</summary>
+          <ul class="list" style="margin-top:12px;">
+            <li>D1 Now: led requirements gathering with research teams, clinical teams, and the Young Adult Panel, shaping information architecture, content strategy, and workflows.</li>
+            <li>D1 Now: supported build and rollout activities including backlog creation, sprint planning, QA, and user acceptance testing, aligned with consent and privacy requirements.</li>
+            <li>AGAPE: led the technical development of the Introductory Open Science MOOC site and reusable site components.
+              <a href="https://agape-openscience.github.io/AgapeOpenscienceMOOC/index.html" target="_blank" rel="noopener">Course link</a>
+            </li>
+            <li>Templates and protocols developed for these sites will be made openly available once finalised and cleared for release.</li>
+          </ul>
+        </details>
+
+        <div class="pillrow">
+          <span class="pill">Web development</span>
           <span class="pill">Accessibility</span>
+          <span class="pill">Canva</span>
+          <span class="pill">GitHub</span>
+        </div>
+      </div>
+
+      <!-- 5) Technical career (IT) -->
+      <div class="card filter-item"
+           data-tags="it-career troubleshooting automation python cloud support quality-assurance documentation leadership">
+        <h3>Technical career (IT)</h3>
+
+        <p>
+          Earlier roles in application support and cloud tooling strengthened how I approach delivery: clear workflows, practical documentation,
+          and disciplined troubleshooting.
+        </p>
+
+        <details>
+          <summary>Read more</summary>
+          <ul class="list" style="margin-top:12px;">
+            <li>Responsible for manual testing of cloud-based products, with structured defect reporting and quality checks.</li>
+            <li>Served as a team lead and subject matter expert for a team of solution support engineers.</li>
+            <li>Developed Python-based modules to support troubleshooting and automation.</li>
+            <li>Supported customer onboarding, technical training, and documentation.</li>
+            <li>Triage and support for application, services, and cloud issues, including integration on private and public cloud environments.</li>
+          </ul>
+        </details>
+
+        <div class="pillrow">
+          <span class="pill">Python automation</span>
+          <span class="pill">Troubleshooting</span>
+          <span class="pill">Quality assurance</span>
+          <span class="pill">Team leadership</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section id="community">
+  <div class="container">
+    <h2 class="section-title">Community management</h2>
+
+    <p class="section-subtitle">
+      Alongside research and programme delivery, I am involved in building and supporting communities that reflect my
+      values around openness, collaboration, care, and shared learning.
+    </p>
+
+    <div class="grid grid-2">
+
+      <!-- AGAPE -->
+      <div class="card filter-item"
+           data-tags="community-management open-science open-education collaboration mentorship leadership">
+        <h3>AGAPE Open Science Community</h3>
+
+        <p>
+          I am one of the co-founders of AGAPE, an open science community that reflects many of the values I believe in and
+          try to practise in my work. AGAPE is one of my proudest projects and a source of genuine joy.
+        </p>
+
+        <details>
+          <summary>Read more</summary>
+          <div style="margin-top:12px;">
+            <p>
+              AGAPE was developed to create an accessible, supportive space for researchers who want to engage with open
+              science in a practical and inclusive way. We focus on lowering barriers to participation, sharing knowledge
+              openly, and supporting early and mid-career researchers to build confidence, skills, and networks.
+            </p>
+            <p>
+              The community brings together people across disciplines, career stages, and geographies, and emphasises
+              collaboration over competition. It also serves as a platform for open educational resources, community-led
+              learning, and peer support.
+            </p>
+            <p>
+              More details about the community, its activities, and resources are available on the AGAPE website.
+              <br>
+              <a href="https://agape-openscience.github.io" target="_blank" rel="noopener">
+                Visit the AGAPE website
+              </a>
+            </p>
+          </div>
+        </details>
+
+        <div class="pillrow">
+          <span class="pill">Community building</span>
+          <span class="pill">Open science</span>
+          <span class="pill">Open education</span>
+          <span class="pill">Mentorship</span>
+        </div>
+      </div>
+
+      <!-- Placeholder -->
+      <div class="card filter-item"
+           data-tags="community-management collaboration placeholder">
+        <h3>Additional community work</h3>
+
+        <p>
+          This space is reserved for additional community management and leadership work.
+        </p>
+
+        <details>
+          <summary>Read more</summary>
+          <p style="margin-top:12px;">
+            Details to be added.
+          </p>
+        </details>
+
+        <div class="pillrow">
+          <span class="pill">Community management</span>
+          <span class="pill">Collaboration</span>
         </div>
       </div>
 
@@ -639,37 +1264,134 @@
   </div>
 </section>
 
+<section id="talks">
+  <div class="container">
+    <h2 class="section-title">Invited talks, conferences, and workshops</h2>
 
-    <section id="publications">
-      <div class="container">
-        <h2 class="section-title">Publications</h2>
-        <p class="section-subtitle">
-          A small selection. You can add more, or link out to a full list on Google Scholar.
+    <p class="section-subtitle">
+      I regularly contribute to conferences, workshops, and invited talks across behavioural science, health research,
+      open science, and interdisciplinary collaboration.
+    </p>
+
+    <div class="grid grid-2">
+
+      <!-- Placeholder item -->
+      <div class="card filter-item"
+           data-tags="conference-presentation invited-talk behaviour-change">
+        <h3>Talk or presentation title</h3>
+        <p class="meta">
+          Event name · Location or online · Year
+        </p>
+        <p>
+          Short description of the topic and audience, written for a general reader.
         </p>
 
-        <div class="grid grid-2">
-          <div class="card pub">
-            <h3>Publication title</h3>
-            <div class="meta">Authors · Journal · Year · <a href="#">DOI</a></div>
-            <p>One sentence summary of the contribution, written for a broad audience.</p>
-            <div class="pillrow">
-              <span class="pill">Open access</span>
-              <span class="pill">Methods</span>
-            </div>
-          </div>
-
-          <div class="card pub">
-            <h3>Publication title</h3>
-            <div class="meta">Authors · Journal · Year · <a href="#">DOI</a></div>
-            <p>One sentence summary, keeping it concrete and readable.</p>
-            <div class="pillrow">
-              <span class="pill">Digital health</span>
-              <span class="pill">Evaluation</span>
-            </div>
-          </div>
+        <div class="pillrow">
+          <span class="pill">Invited talk</span>
+          <span class="pill">Behavioural science</span>
         </div>
       </div>
-    </section>
+
+      <!-- Placeholder item -->
+      <div class="card filter-item"
+           data-tags="conference-workshop open-science training">
+        <h3>Workshop or panel contribution</h3>
+        <p class="meta">
+          Event name · Location or online · Year
+        </p>
+        <p>
+          Short description of your role (for example, speaker, panellist, facilitator) and the focus of the session.
+        </p>
+
+        <div class="pillrow">
+          <span class="pill">Workshop</span>
+          <span class="pill">Open science</span>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="section-subtitle" style="margin-top:18px;">
+      Additional talks and conference contributions will be added over time.
+    </p>
+  </div>
+</section>
+
+
+<section id="publications">
+  <div class="container">
+    <h2 class="section-title">Publications</h2>
+
+    <p class="section-subtitle">
+      Selected peer-reviewed publications and research outputs. I prioritise work that contributes methodologically,
+      supports real-world application, or advances open, transparent research practice.
+    </p>
+
+    <!-- One single publications block -->
+    <div class="card filter-item"
+         data-tags="publication peer-reviewed behaviour-change evidence-synthesis mixed-methods open-science">
+
+      <ul class="list">
+        <li>
+          <strong>Publication title.</strong>
+          Author(s). <em>Journal name</em>, Year.  
+          One–two sentence plain-language summary describing the research question, approach, and why it matters.
+        </li>
+
+        <li>
+          <strong>Publication title.</strong>
+          Author(s). <em>Journal name</em>, Year.  
+          One–two sentence summary describing the focus of the review and its contribution.
+        </li>
+
+        <li>
+          <strong>Publication title.</strong>
+          Author(s). <em>Journal name</em>, Year.  
+          One–two sentence summary highlighting methods, population, and relevance for practice or policy.
+        </li>
+
+        <li>
+          <strong>Publication title.</strong>
+          Author(s). <em>Journal name</em>, Year.  
+          One–two sentence summary written for readers outside the immediate field.
+        </li>
+      </ul>
+
+      <!-- Expandable full list -->
+      <details style="margin-top:16px;">
+        <summary>Read more publications</summary>
+
+        <ul class="list" style="margin-top:14px;">
+          <li>
+            <strong>Publication title.</strong>
+            Author(s). <em>Journal name</em>, Year.
+          </li>
+
+          <li>
+            <strong>Publication title.</strong>
+            Author(s). <em>Journal name</em>, Year.
+          </li>
+
+          <li>
+            <strong>Publication title.</strong>
+            Author(s). <em>Journal name</em>, Year.
+          </li>
+
+          <li>
+            <strong>Publication title.</strong>
+            Author(s). <em>Journal name</em>, Year.
+          </li>
+        </ul>
+      </details>
+
+    </div>
+
+    <p class="section-subtitle" style="margin-top:18px;">
+      A complete and up-to-date publication list is available on
+      <a href="#" target="_blank" rel="noopener">Google Scholar</a>.
+    </p>
+  </div>
+</section>
 
     <section id="contact">
       <div class="container">
@@ -679,23 +1401,17 @@
         </p>
 
         <div class="grid grid-2">
-          <div class="card">
+          <div class="card filter-item" data-tags="collaboration project-management">
             <h3>Email</h3>
             <p><a href="mailto:your.email@example.com">your.email@example.com</a></p>
-            <p style="margin-top: 10px; color: var(--muted2); font-size: 13px;">
-              Please include a short subject line and a sentence explaining what you would like to discuss.
-            </p>
           </div>
 
-          <div class="card">
+          <div class="card filter-item" data-tags="open-science git osf">
             <h3>Links</h3>
             <p><a href="https://github.com/yourusername">GitHub</a></p>
             <p><a href="#">Google Scholar</a></p>
             <p><a href="#">ORCID</a></p>
             <p><a href="#">LinkedIn</a></p>
-            <p style="margin-top: 10px; color: var(--muted2); font-size: 13px;">
-              Replace the placeholder URLs so the links work.
-            </p>
           </div>
         </div>
       </div>
@@ -715,7 +1431,65 @@
   </main>
 
   <script>
+    // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Filtering across the page: any element with class "filter-item" and a "data-tags" attribute
+    const filterButtons = Array.from(document.querySelectorAll('#tag-filters button'));
+    const filterItems = Array.from(document.querySelectorAll('.filter-item'));
+    const filterMeta = document.getElementById('filterMeta');
+    const tagSearch = document.getElementById('tagSearch');
+
+    function normaliseTags(raw) {
+      return (raw || "").toLowerCase();
+    }
+
+    function applyFilter(tag) {
+      const selected = (tag || "all").toLowerCase();
+      let visibleCount = 0;
+
+      filterItems.forEach(item => {
+        const tags = normaliseTags(item.dataset.tags);
+        const show = (selected === "all") || tags.includes(selected);
+        item.style.display = show ? "" : "none";
+        if (show) visibleCount += 1;
+      });
+
+      if (selected === "all") {
+        filterMeta.textContent = "Showing all items.";
+      } else {
+        filterMeta.textContent = "Showing " + visibleCount + " item(s) tagged: " + selected + ".";
+      }
+    }
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        applyFilter(btn.dataset.filter);
+      });
+    });
+
+    // Tag search: filters which tag buttons are visible (does not change the selected filter)
+    tagSearch.addEventListener('input', () => {
+      const q = (tagSearch.value || "").trim().toLowerCase();
+
+      filterButtons.forEach(btn => {
+        const text = (btn.textContent || "").toLowerCase();
+        const key = (btn.dataset.filter || "").toLowerCase();
+
+        if (!q) {
+          btn.style.display = "";
+          return;
+        }
+
+        const matches = text.includes(q) || key.includes(q);
+        btn.style.display = matches ? "" : "none";
+      });
+    });
+
+    // Default state
+    applyFilter("all");
   </script>
 </body>
 </html>
