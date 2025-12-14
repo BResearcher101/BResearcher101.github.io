@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name</title>
+  <meta name="description" content="Personal website: research, programme management, and technical work." />
+
+  <!-- Fonts (editorial + readable) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --text: rgba(24, 33, 38, 0.92);
+      --muted: rgba(24, 33, 38, 0.68);
+      --muted2: rgba(24, 33, 38, 0.54);
+      --border: rgba(24, 33, 38, 0.10);
+
+      /* Accent tuned to your soft background */
+      --accent: #5f7f86;        /* muted teal */
+      --accentHover: #4f6e74;
+
+      --shadow: 0 18px 60px rgba(24, 33, 38, 0.18);
+      --shadowSoft: 0 10px 26px rgba(24, 33, 38, 0.10);
+      --radius: 18px;
+      --max: 1120px;
+    }
+
+    *{ box-sizing: border-box; }
+    html{ scroll-behavior: smooth; }
+
+    body{
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.75;
+      min-height: 100vh;
+      background: #f6f7fb;
+    }
+
+    /* Background image (use your repo file: 123.jpg) */
+    body::before{
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: url("123.jpg") center / cover no-repeat;
+      filter: blur(22px) saturate(1.05);
+      transform: scale(1.18);
+      z-index: -3;
+    }
+
+    /* Soft wash overlay so text stays readable */
+    body::after{
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(900px 520px at 18% 20%, rgba(255,255,255,0.55), transparent 62%),
+        radial-gradient(900px 520px at 75% 22%, rgba(255,255,255,0.45), transparent 62%),
+        linear-gradient(180deg, rgba(246,247,251,0.86), rgba(246,247,251,0.74));
+      z-index: -2;
+    }
+
+    /* Subtle grain to hide small-image artefacts */
+    .grain{
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.08;
+      z-index: -1;
+      background-image:
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.06) 0 1px, rgba(0,0,0,0) 1px 3px),
+        repeating-linear-gradient(90deg, rgba(0,0,0,0.04) 0 1px, rgba(0,0,0,0) 1px 4px);
+      mix-blend-mode: soft-light;
+    }
+
+    a{
+      color: var(--accent);
+      text-decoration: none;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+    a:hover{
+      color: var(--accentHover);
+      text-decoration: underline;
+    }
+
+    .container{
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    h1, h2, h3, .name{
+      font-family: "Source Serif 4", Georgia, serif;
+      font-weight: 500;
+      letter-spacing: -0.2px;
+    }
+
+    /* Top nav */
+    .nav{
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(10px);
+      background: rgba(246, 247, 251, 0.72);
+      border-bottom: 1px solid rgba(24, 33, 38, 0.08);
+    }
+    .nav-inner{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+    }
+    .brand{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      color: var(--text);
+    }
+    .brand-badge{
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(95,127,134,0.95), rgba(79,110,116,0.90));
+      box-shadow: 0 10px 26px rgba(95,127,134,0.16);
+      border: 1px solid rgba(255,255,255,0.75);
+    }
+
+    .nav-links{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .nav-links a{
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      color: rgba(24, 33, 38, 0.72);
+    }
+    .nav-links a:hover{
+      text-decoration: none;
+      background: rgba(255,255,255,0.70);
+      border-color: rgba(24, 33, 38, 0.08);
+      color: var(--text);
+    }
+
+    /* Intro */
+    .intro{
+      padding: 64px 0 40px 0;
+    }
+
+    .intro-grid{
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .profile{
+      text-align: center;
+    }
+    .avatar{
+      width: 230px;
+      height: 230px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 18px auto;
+      border: 1px solid rgba(24, 33, 38, 0.10);
+      background: rgba(255,255,255,0.85);
+      box-shadow: var(--shadowSoft);
+    }
+    .avatar img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .name{
+      margin: 0;
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+    }
+    .role{
+      margin-top: 6px;
+      font-size: 16px;
+      color: var(--muted);
+    }
+
+    .links{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 18px;
+    }
+    .link-btn{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      font-size: 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(24, 33, 38, 0.10);
+      background: rgba(255,255,255,0.78);
+      color: rgba(24, 33, 38, 0.88);
+      box-shadow: 0 8px 18px rgba(24, 33, 38, 0.06);
+      transition: background 120ms ease, border-color 120ms ease, transform 120ms ease;
+    }
+    .link-btn:hover{
+      text-decoration: none;
+      background: rgba(255,255,255,0.92);
+      border-color: rgba(95,127,134,0.35);
+      transform: translateY(-1px);
+    }
+
+    .panel{
+      background: rgba(255,255,255,0.76);
+      border: 1px solid rgba(24, 33, 38, 0.10);
+      border-radius: calc(var(--radius) + 10px);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      backdrop-filter: blur(8px);
+    }
+
+    .bio p{ margin-top: 0; margin-bottom: 1.1em; }
+    .bio p:last-child{ margin-bottom: 0; }
+
+    .pillrow{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .pill{
+      font-size: 12px;
+      color: rgba(24, 33, 38, 0.65);
+      border: 1px solid rgba(24, 33, 38, 0.10);
+      background: rgba(255,255,255,0.80);
+      padding: 6px 10px;
+      border-radius: 999px;
+    }
+
+    /* Sections */
+    section{ padding: 44px 0; }
+    .section-title{
+      font-size: 22px;
+      letter-spacing: 0;
+      margin: 0 0 8px 0;
+    }
+    .section-subtitle{
+      margin: 0 0 18px 0;
+      color: var(--muted);
+      max-width: 85ch;
+    }
+
+    .grid{ display: grid; gap: 16px; }
+    .grid-2{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .card{
+      background: rgba(255,255,255,0.74);
+      border: 1px solid rgba(24, 33, 38, 0.10);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadowSoft);
+      backdrop-filter: blur(8px);
+    }
+    .card h3{
+      margin: 0 0 6px 0;
+      font-size: 16px;
+      letter-spacing: -0.1px;
+    }
+    .card p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .list{
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .pub{
+      display: grid;
+      gap: 6px;
+    }
+    .pub .meta{
+      color: var(--muted2);
+      font-size: 12px;
+    }
+
+    .footer{
+      padding: 30px 0 48px 0;
+      color: var(--muted2);
+      border-top: 1px solid rgba(24, 33, 38, 0.08);
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(8px);
+    }
+
+    /* Responsive */
+    @media (max-width: 920px){
+      .intro-grid{ grid-template-columns: 1fr; }
+      .profile{ text-align: left; display: flex; gap: 22px; align-items: center; }
+      .avatar{ width: 150px; height: 150px; margin: 0; }
+      .links{ justify-content: flex-start; }
+    }
+    @media (max-width: 720px){
+      .nav-inner{ flex-direction: column; align-items: flex-start; }
+      .grid-2, .grid-3{ grid-template-columns: 1fr; }
+      .profile{ flex-direction: column; align-items: flex-start; }
+      .avatar{ width: 170px; height: 170px; }
+      .panel{ padding: 20px; }
+    }
+
+    :focus-visible{
+      outline: 2px solid rgba(95,127,134,0.85);
+      outline-offset: 3px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <div class="brand">
+          <div class="brand-badge" aria-hidden="true"></div>
+          <div>Your Name</div>
+        </div>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#research">Research</a>
+          <a href="#programme">Programme Management</a>
+          <a href="#technical">Technical Work</a>
+          <a href="#publications">Publications</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro" id="top">
+      <div class="container">
+        <div class="intro-grid">
+
+          <div class="profile">
+            <div class="avatar">
+              <img src="profile.jpg" alt="Your Name" />
+            </div>
+
+            <div>
+              <h1 class="name">Your Name</h1>
+              <div class="role">Your Role or Title</div>
+
+              <div class="links">
+                <a class="link-btn" href="mailto:your.email@example.com">Email</a>
+                <a class="link-btn" href="https://github.com/yourusername">GitHub</a>
+                <a class="link-btn" href="#">Google Scholar</a>
+                <a class="link-btn" href="#">ORCID</a>
+                <a class="link-btn" href="#">LinkedIn</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel bio">
+            <p>
+              I work across behavioural science, digital health, and evidence synthesis, with a focus on applied research that fits real settings.
+              I currently work as <strong>Your Role</strong> at <strong>Your Organisation</strong>.
+            </p>
+
+            <p>
+              My work sits at the intersection of research, programme delivery, and technical implementation. I care about clear methods, transparent
+              documentation, and outputs that other people can use.
+            </p>
+
+            <p>
+              This website summarises three main research themes, a snapshot of my programme management experience, and examples of technical work
+              (tools, workflows, and reproducible analysis).
+            </p>
+
+            <p>
+              If you would like to discuss collaboration, roles, or projects, please <a href="#contact">contact me</a>.
+            </p>
+
+            <div class="pillrow" aria-label="Key topics">
+              <span class="pill">Behavioural science</span>
+              <span class="pill">Digital health</span>
+              <span class="pill">Evidence synthesis</span>
+              <span class="pill">Programme management</span>
+              <span class="pill">R and Python</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="container">
+        <h2 class="section-title">Research</h2>
+        <p class="section-subtitle">
+          Three themes that reflect my current work. Replace the titles and text with your own wording.
+        </p>
+
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>Theme 1: Digital health and self-management</h3>
+            <p>Interventions, engagement, and outcomes in real services, with attention to lived experience and equity.</p>
+            <div class="pillrow">
+              <span class="pill">Intervention design</span>
+              <span class="pill">Process evaluation</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Theme 2: Evidence synthesis and methods</h3>
+            <p>Systematic and umbrella reviews, reporting quality, and methods for complex interventions across disciplines.</p>
+            <div class="pillrow">
+              <span class="pill">PRISMA</span>
+              <span class="pill">Umbrella review</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Theme 3: Behaviour change in real-world contexts</h3>
+            <p>Applied behavioural science, implementation constraints, and pragmatic design choices that improve fit and feasibility.</p>
+            <div class="pillrow">
+              <span class="pill">COM-B</span>
+              <span class="pill">BCTs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="programme">
+      <div class="container">
+        <h2 class="section-title">Programme Management</h2>
+        <p class="section-subtitle">
+          A short, concrete snapshot of delivery work. Keep this outcomes-focused and specific.
+        </p>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>Delivery and coordination</h3>
+            <ul class="list">
+              <li>Day to day delivery across timelines, stakeholders, and work packages.</li>
+              <li>Governance set-up, meeting preparation, action tracking, and decision logs.</li>
+              <li>Site onboarding support, documentation, and quality processes.</li>
+              <li>Risk tracking and operational reporting for study teams.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Compliance and research operations</h3>
+            <ul class="list">
+              <li>Ethics and data protection coordination, including DPIA support where needed.</li>
+              <li>Documentation structures that are audit-friendly and easy for sites to use.</li>
+              <li>Vendor coordination and practical procurement support.</li>
+              <li>Participant-facing clarity, with attention to plain language and usability.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="technical">
+      <div class="container">
+        <h2 class="section-title">Technical Work</h2>
+        <p class="section-subtitle">
+          Tools, workflows, and technical projects. Add links to repositories, demos, or write-ups.
+        </p>
+
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>Data and analysis</h3>
+            <p>R and Python for cleaning, analysis, reproducible reporting, and visualisation.</p>
+            <div class="pillrow">
+              <span class="pill">R</span>
+              <span class="pill">Python</span>
+              <span class="pill">Quarto</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Qualitative workflows</h3>
+            <p>Organising, coding, and documenting qualitative analysis in a consistent and transparent way.</p>
+            <div class="pillrow">
+              <span class="pill">MAXQDA</span>
+              <span class="pill">Reflexive thematic analysis</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Web and research tooling</h3>
+            <p>Lightweight websites and documentation that teams can maintain without friction.</p>
+            <div class="pillrow">
+              <span class="pill">HTML/CSS</span>
+              <span class="pill">GitHub Pages</span>
+              <span class="pill">Figma</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="container">
+        <h2 class="section-title">Publications</h2>
+        <p class="section-subtitle">
+          A small selection. You can add more, or link out to a full list on Google Scholar.
+        </p>
+
+        <div class="grid grid-2">
+          <div class="card pub">
+            <h3>Publication title</h3>
+            <div class="meta">Authors · Journal · Year · <a href="#">DOI</a></div>
+            <p>One sentence summary of the contribution, written for a broad audience.</p>
+            <div class="pillrow">
+              <span class="pill">Open access</span>
+              <span class="pill">Methods</span>
+            </div>
+          </div>
+
+          <div class="card pub">
+            <h3>Publication title</h3>
+            <div class="meta">Authors · Journal · Year · <a href="#">DOI</a></div>
+            <p>One sentence summary, keeping it concrete and readable.</p>
+            <div class="pillrow">
+              <span class="pill">Digital health</span>
+              <span class="pill">Evaluation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-subtitle">
+          Replace these placeholders with your real email and links.
+        </p>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>Email</h3>
+            <p><a href="mailto:your.email@example.com">your.email@example.com</a></p>
+            <p style="margin-top: 10px; color: var(--muted2); font-size: 13px;">
+              Please include a short subject line and a sentence explaining what you would like to discuss.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Links</h3>
+            <p><a href="https://github.com/yourusername">GitHub</a></p>
+            <p><a href="#">Google Scholar</a></p>
+            <p><a href="#">ORCID</a></p>
+            <p><a href="#">LinkedIn</a></p>
+            <p style="margin-top: 10px; color: var(--muted2); font-size: 13px;">
+              Replace the placeholder URLs so the links work.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      <div class="container">
+        <div style="display:flex; flex-wrap:wrap; gap: 12px; align-items:center; justify-content:space-between;">
+          <div>© <span id="year"></span> Your Name</div>
+          <div style="display:flex; gap:14px;">
+            <a href="#top">Back to top</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
